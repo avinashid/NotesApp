@@ -1,0 +1,53 @@
+#root {
+  margin:0px;
+  padding: 0px;
+  box-sizing: border-box;
+  
+}
+.header{
+  font-size: 30px;
+  width:100vw;
+  height:fit-content;
+  margin: 0px;
+  padding:10px;
+  text-align: center;
+  background-color: black;
+  box-shadow: 5px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.listContainer{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10vw;
+  padding:20px;
+  border-radius: 20px;
+  background-color: rgb(21, 82, 113,0.1)
+}
+.showNote{
+  border-radius: 0px 10px 10px 0px ;
+  padding:20px;
+  /* display:flex; */
+  width:900px;
+  height:80vh;
+  background-color: beige;
+  color:brown;
+  resize: none;
+
+}
+.showNote:focus{
+  outline: 0px;
+}
+.eachList{
+  color:white;
+  background-color: rgba(209, 161, 29, 0.5);
+  width:350px;
+  padding:10px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.lists{ 
+  display:flex;
+  flex-direction: column;
+  gap:20px;
+}
