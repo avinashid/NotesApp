@@ -37,24 +37,11 @@ export const listSlice = createSlice({
           : { ...s }
       );
     },
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state, { payload }) => {
-      state.value -= 1;
-      console.log(payload);
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
-  increment,
-  decrement,
-  incrementByAmount,
   setCurrentList,
   updateList,
   addList,

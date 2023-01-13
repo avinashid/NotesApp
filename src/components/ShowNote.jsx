@@ -1,14 +1,14 @@
-import React, { useEffect,useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentList, updateList } from "../features/list/listSlice";
 
 const ShowNote = () => {
+  const select = useSelector((state) => state.list.currentList);
+  const dispatch = useDispatch();
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current.focus();
-  }, []);
-  const dispatch = useDispatch();
-  const select = useSelector((state) => state.list.currentList);
+  }, [select]);
   const onChange = (e) => {
     let id = select.id;
     let note = e.target.value;
