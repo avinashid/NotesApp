@@ -1,6 +1,7 @@
 import React from "react";
+import { FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentList } from "../features/list/listSlice";
+import { setCurrentList,deleteList } from "../features/list/listSlice";
 
 const EachList = ({ id, note }) => {
   const dispatch = useDispatch();
@@ -10,13 +11,22 @@ const EachList = ({ id, note }) => {
   let temp = useSelector(
     (state) => state.list.listProps.filter((f) => f.id === id)[0].title
   );
-  console.log(temp);
-  if (note.length > 2) {
+  if (note.trim().length > 2) {
     temp = note;
+    temp = temp.slice(0, 30);
+    if (temp.trim().includes("\n")) {
+      let end = temp.trim().indexOf("\n");
+      temp = temp.slice(0, end);
+    }
+  }
+
+  const deleteListAction=()=>{
+    dispatch(deleteList(id))
   }
   return (
     <div className="eachList" onClick={listOnClick}>
-      {temp.slice(0, 25)}
+      <div>{temp}</div>
+      <FaTrash onClick={deleteListAction}/>
     </div>
   );
 };

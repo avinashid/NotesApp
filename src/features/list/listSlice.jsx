@@ -6,7 +6,7 @@ export const listSlice = createSlice({
     value: 0,
     listProps: [
       {
-        title:"New Note 1",
+        title: "New Note 1",
         key: "key1",
         id: "id1",
         note: "",
@@ -37,14 +37,17 @@ export const listSlice = createSlice({
           : { ...s }
       );
     },
+    deleteList: (state, action) => {
+      const i=state.listProps.map((arr, i) => {
+        if (arr.id === action.payload) return i;
+      });
+      state.listProps.pop(i);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {
-  setCurrentList,
-  updateList,
-  addList,
-} = listSlice.actions;
+export const { deleteList, setCurrentList, updateList, addList } =
+  listSlice.actions;
 
 export default listSlice.reducer;
