@@ -1,4 +1,5 @@
 import React from "react";
+import { FaPlusSquare } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { addList, setCurrentList } from "../features/list/listSlice";
 
@@ -9,7 +10,8 @@ const CreateList = () => {
   };
   return (
     <div className="eachList" onClick={addListAction}>
-      Create New
+      <div className="createNew">Create New</div>
+      <FaPlusSquare />
     </div>
   );
 };

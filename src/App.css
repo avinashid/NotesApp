@@ -14,21 +14,26 @@
   background-color: black;
   box-shadow: 5px 0px 10px rgba(255, 255, 255, 0.1);
 }
-
-.listContainer{
+.mainContainer{
   display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10px 10vw;
+  flex-direction: column;
+  justify-content: center;
+}
+.listContainer{
+  display:grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-content: center;
   padding:20px;
   border-radius: 20px;
   background-color: rgb(21, 82, 113,0.1)
 }
 .showNote{
+  min-width: 300px;
+  max-width: 800px;
   border-radius: 0px 10px 10px 0px ;
   padding:20px;
-  /* display:flex; */
-  width:900px;
+  /* width:900px; */
   height:80vh;
   background-color: beige;
   color:brown;
@@ -41,15 +46,35 @@
 .eachList{
   display: flex;
   justify-content: space-between;
-  align-items: center;  color:white;
+  align-items: center; 
+  color:white;
   background-color: rgba(209, 161, 29, 0.5);
-  width:350px;
   padding:10px;
   border-radius: 10px 0px 0px 10px;
+  gap:10px;
 }
 
 .lists{ 
   display:flex;
   flex-direction: column;
   gap:20px;
+}
+.lastCharEachList{
+  display:none;
+}
+@media screen and (max-width: 600px) {
+  
+  .textInEachList{
+    display:none;
+  }
+  .lastCharEachList{
+    display:inline;
+  }
+  .lastCharEachList:after{
+    content: " " attr(data-last-character);
+    display: inline-block;
+  }
+  .createNew{
+    display: none;
+  }
 }

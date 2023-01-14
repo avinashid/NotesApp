@@ -6,3 +6,4 @@ export default defineConfig({
   base: "/NotesApp/",
   plugins: [react()],
 });
+// git subtree push --prefix dist origin gh-pages
