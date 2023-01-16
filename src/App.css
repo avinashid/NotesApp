@@ -15,14 +15,16 @@
   box-shadow: 5px 0px 10px rgba(255, 255, 255, 0.1);
 }
 .mainContainer{
-  display:flex;
+  display: flex;
+  margin:auto;
+  width:90vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .listContainer{
   display:grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 200px 60vw ;
   justify-content: center;
   align-content: center;
   padding:20px;
@@ -62,7 +64,11 @@
   display:none;
 }
 @media screen and (max-width: 600px) {
-  
+  .listContainer{
+    width:90vw;
+  grid-template-columns: 50px 80vw ;
+
+  }
   .textInEachList{
     display:none;
   }
@@ -76,4 +82,21 @@
   .createNew{
     display: none;
   }
+}
+
+.searchField{
+  font-size: 1rem;
+  background-color: beige;
+  outline: none;
+  border-radius:10px;
+  vertical-align: center;
+  border: none;
+  width: calc(60vw);
+  color:black;
+  padding: 12px 20px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+.searchField:focus{
+  outline:none;
 }

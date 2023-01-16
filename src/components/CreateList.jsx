@@ -1,12 +1,14 @@
 import React from "react";
 import { FaPlusSquare } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addList, setCurrentList } from "../features/list/listSlice";
+import { addList, searchList, setCurrentList } from "../features/list/listSlice";
 
 const CreateList = () => {
   const dispatch = useDispatch();
+  const searchValue = "";
   const addListAction = () => {
     dispatch(addList());
+    dispatch(searchList({searchValue}))
   };
   return (
     <div className="eachList" onClick={addListAction}>

@@ -16,7 +16,7 @@ const EachList = ({ id, note }) => {
   );
   if (note.trim().length > 2) {
     temp = note;
-    temp = temp.slice(0, 30);
+    temp = temp.slice(0, 20);
     if (temp.trim().includes("\n")) {
       let end = temp.trim().indexOf("\n");
       temp = temp.slice(0, end);

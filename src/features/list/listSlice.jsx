@@ -3,13 +3,14 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 export const listSlice = createSlice({
   name: "list",
   initialState: {
-    value: 0,
+    search: "",
     listProps: [
       {
         title: "New Note 1",
         key: "key1",
         id: "id1",
         note: "",
+        isVisible: true,
       },
     ],
     currentList: {
@@ -28,6 +29,7 @@ export const listSlice = createSlice({
         id: nanoid(),
         key: nanoid(),
         note: "",
+        isVisible: true,
       });
     },
     updateList: (state, action) => {
@@ -38,16 +40,24 @@ export const listSlice = createSlice({
       );
     },
     deleteList: (state, action) => {
-      const i=state.listProps.map((arr, i) => {
+      const i = state.listProps.map((arr, i) => {
         if (arr.id === action.payload) return i;
       });
       state.listProps.pop(i);
+    },
+    searchList: (state, action) => {
+      state.search = action.payload.searchValue;
+      state.listProps = state.listProps.map((s) =>
+        s.note.includes(state.search)
+          ? { ...s, isVisible: true }
+          : { ...s, isVisible: false }
+      );
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { deleteList, setCurrentList, updateList, addList } =
+export const { searchList, deleteList, setCurrentList, updateList, addList } =
   listSlice.actions;
 
 export default listSlice.reducer;
