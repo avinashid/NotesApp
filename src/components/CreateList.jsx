@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
 import { FaPlusSquare } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,10 +6,12 @@ import { addList, searchList, setCurrentList } from "../features/list/listSlice"
 
 const CreateList = () => {
   const dispatch = useDispatch();
-  const searchValue = "";
   const addListAction = () => {
-    dispatch(addList());
-    dispatch(searchList({searchValue}))
+    let id = nanoid();
+    dispatch(addList({id}));
+    dispatch(setCurrentList({id,note:""}))
+    dispatch(searchList({searchValue:""}))
+    // document.getElementById(state.currentList.id).style.background="blue";
   };
   return (
     <div className="eachList" onClick={addListAction}>

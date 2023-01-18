@@ -20,17 +20,18 @@ export const listSlice = createSlice({
   },
   reducers: {
     setCurrentList: (state, action) => {
-      (state.currentList.note = action.payload.note),
-        (state.currentList.id = action.payload.id);
+      (state.currentList.id = action.payload.id);
+      (state.currentList.note = action.payload.note);
     },
-    addList: (state) => {
+    addList: (state,action) => {
       state.listProps.unshift({
         title: "New Note " + (state.listProps.length + 1),
-        id: nanoid(),
+        id: action.payload.id,
         key: nanoid(),
         note: "",
         isVisible: true,
       });
+      
     },
     updateList: (state, action) => {
       state.listProps = state.listProps.map((s) =>
@@ -40,10 +41,14 @@ export const listSlice = createSlice({
       );
     },
     deleteList: (state, action) => {
-      const i = state.listProps.map((arr, i) => {
-        if (arr.id === action.payload) return i;
+      let i;
+      state.listProps.forEach((arr, index) => {
+        if (arr.id === action.payload.id) {
+          i=index;
+        }
       });
-      state.listProps.pop(i);
+      state.listProps.splice(i,1);
+      // state.currentList.id="id1"
     },
     searchList: (state, action) => {
       state.search = action.payload.searchValue;

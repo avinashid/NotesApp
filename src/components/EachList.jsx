@@ -23,18 +23,21 @@ const EachList = ({ id, note }) => {
     }
   }
 
-  const deleteListAction = () => {
-    dispatch(deleteList(id));
+  const deleteListAction = (e) => {
+    e.stopPropagation();
+    
+    dispatch(deleteList({id}));
+    
   };
   return (
     <div
       className="eachList"
       onClick={listOnClick}
-      
+      id={id}
     >
       <div className="lastCharEachList" data-last-character={lastChar.slice(-1)}></div>
       <div className="textInEachList" >{temp}</div>
-      <FaTrash onClick={deleteListAction} />
+      <FaTrash onClick={(e)=>deleteListAction(e)} />
     </div>
   );
 };
